@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  app:
+    image: node:22
+    container_name: my-node-app
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=p54321
+      - DB_DATABASE=express-crud
+      - JWT_SECRET=hexschool666
+      - JWT_EXPIRES_DAY=30d
+    command: >
+      sh -c "npm install && npm run dev"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: p54321
+      POSTGRES_DB: express-crud
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

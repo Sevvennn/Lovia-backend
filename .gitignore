@@ -1,0 +1,29 @@
+# Node.js 相關檔案
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# 資料庫檔案（如果有）
+*.sqlite
+*.db
+*.db3
+*.sql
+
+# 環境設定檔
+.env
+
+# 編譯結果（如果有 TypeScript）
+dist/
+build/
+
+# 操作系統檔案
+.DS_Store
+Thumbs.db
+
+# 日誌檔案
+*.log
+
+# IDE 或編輯器的設定檔
+.vscode/
+.idea/
+*.swp
